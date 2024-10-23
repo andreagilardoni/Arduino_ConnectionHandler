@@ -24,37 +24,37 @@ bool GenericConnectionHandler::updateSetting(const models::NetworkSetting& s) {
     switch(s.type) {
         #if defined(BOARD_HAS_WIFI)
         case NetworkAdapter::WIFI:
-            _ch = new WiFiConnectionHandler();
+            _ch = std::unique_ptr<ConnectionHandler>(new WiFiConnectionHandler());
             break;
         #endif
 
         #if defined(BOARD_HAS_ETHERNET)
         case NetworkAdapter::ETHERNET:
-            _ch = new EthernetConnectionHandler();
+            _ch = std::unique_ptr<ConnectionHandler>(new EthernetConnectionHandler());
             break;
         #endif
 
         #if defined(BOARD_HAS_NB)
         case NetworkAdapter::NB:
-            _ch = new NBConnectionHandler();
+            _ch = std::unique_ptr<ConnectionHandler>(new NBConnectionHandler());
             break;
         #endif
 
         #if defined(BOARD_HAS_GSM)
         case NetworkAdapter::GSM:
-            _ch = new GSMConnectionHandler();
+            _ch = std::unique_ptr<ConnectionHandler>(new GSMConnectionHandler());
             break;
         #endif
 
         #if defined(BOARD_HAS_CATM1_NBIOT)
         case NetworkAdapter::CATM1:
-            _ch = new CatM1ConnectionHandler();
+            _ch = std::unique_ptr<ConnectionHandler>(new CatM1ConnectionHandler());
             break;
         #endif
 
         #if defined(BOARD_HAS_CELLULAR)
         case NetworkAdapter::CELL:
-            _ch = new CellularConnectionHandler();
+            _ch = std::unique_ptr<ConnectionHandler>(new CellularConnectionHandler());
             break;
         #endif
 

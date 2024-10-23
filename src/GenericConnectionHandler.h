@@ -23,7 +23,7 @@
  ******************************************************************************/
 
 #include "ConnectionHandlerInterface.h"
-
+#include <memory>
 /******************************************************************************
    CLASS DECLARATION
  ******************************************************************************/
@@ -60,7 +60,7 @@ class GenericConnectionHandler : public ConnectionHandler
 
   private:
 
-    ConnectionHandler* _ch;
+    std::unique_ptr<ConnectionHandler> _ch;
 };
 
 #endif /* ARDUINO_GENERIC_CONNECTION_HANDLER_H_ */
