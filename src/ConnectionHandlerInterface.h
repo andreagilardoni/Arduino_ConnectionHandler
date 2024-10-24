@@ -88,7 +88,8 @@ class ConnectionHandler {
      *
      * @return true if the update is successful, false otherwise
      */
-    virtual bool updateSetting(const models::NetworkSetting& s) {
+    virtual bool updateSetting(const models::NetworkSetting& s, bool keep_alive = true) {
+      _keep_alive = keep_alive;
       if(_current_net_connection_state == NetworkConnectionState::INIT && s.type == _interface) {
         memcpy(&_settings, &s, sizeof(s));
         return true;

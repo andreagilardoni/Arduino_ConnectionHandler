@@ -48,7 +48,7 @@ class GenericConnectionHandler : public ConnectionHandler
       UDP & getUDP() override;
     #endif
 
-    bool updateSetting(const models::NetworkSetting& s) override;
+    bool updateSetting(const models::NetworkSetting& s, bool keep_alive = true) override;
 
   protected:
 

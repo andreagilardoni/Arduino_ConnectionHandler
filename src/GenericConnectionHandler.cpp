@@ -19,7 +19,7 @@
 #include "GenericConnectionHandler.h"
 #include "Arduino_ConnectionHandler.h"
 
-bool GenericConnectionHandler::updateSetting(const models::NetworkSetting& s) {
+bool GenericConnectionHandler::updateSetting(const models::NetworkSetting& s, bool keep_alive) {
     // FIXME do not allocate a conn handler when update settings cannot work
     switch(s.type) {
         #if defined(BOARD_HAS_WIFI)
@@ -68,6 +68,8 @@ bool GenericConnectionHandler::updateSetting(const models::NetworkSetting& s) {
             Debug.print(DBG_ERROR, "Network adapter not supported by this platform: %d", s.type);
             return false;
     }
+    
+    _keep_alive = keep_alive;
     _interface = s.type;
     return _ch->updateSetting(s);
 }
