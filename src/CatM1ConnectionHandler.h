@@ -42,7 +42,7 @@ class CatM1ConnectionHandler : public ConnectionHandler
 
     CatM1ConnectionHandler();
     CatM1ConnectionHandler(const char * pin, const char * apn, const char * login, const char * pass, RadioAccessTechnologyType rat = CATM1, uint32_t band = BAND_3 | BAND_20 | BAND_19, bool const keep_alive = true);
-
+    virtual ~CatM1ConnectionHandler() { };
 
     virtual unsigned long getTime() override;
     virtual Client & getClient() override { return _gsm_client; };

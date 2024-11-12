@@ -57,6 +57,8 @@ class EthernetConnectionHandler : public ConnectionHandler
       unsigned long const timeout = 15000,
       unsigned long const responseTimeout = 4000,
       bool const keep_alive = true);
+    
+    virtual ~EthernetConnectionHandler() { };
 
     virtual unsigned long getTime() override { return 0; }
     virtual Client & getClient() override{ return _eth_client; }

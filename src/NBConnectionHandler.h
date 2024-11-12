@@ -43,7 +43,7 @@ class NBConnectionHandler : public ConnectionHandler
     NBConnectionHandler(char const * pin, bool const keep_alive = true);
     NBConnectionHandler(char const * pin, char const * apn, bool const keep_alive = true);
     NBConnectionHandler(char const * pin, char const * apn, char const * login, char const * pass, bool const keep_alive = true);
-
+    virtual ~NBConnectionHandler() { };
 
     virtual unsigned long getTime() override;
     virtual Client & getClient() override { return _nb_client; };

@@ -42,6 +42,7 @@ class LoRaConnectionHandler : public ConnectionHandler
   public:
 
     LoRaConnectionHandler(char const * appeui, char const * appkey, _lora_band const band = _lora_band::EU868, char const * channelMask = NULL, _lora_class const device_class = _lora_class::CLASS_A);
+    virtual ~LoRaConnectionHandler() { };
 
     virtual int write(const uint8_t *buf, size_t size) override;
     virtual int read() override;

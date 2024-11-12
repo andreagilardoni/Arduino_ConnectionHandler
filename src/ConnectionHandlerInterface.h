@@ -48,7 +48,7 @@ class ConnectionHandler {
   public:
 
     ConnectionHandler(bool const keep_alive=false, NetworkAdapter interface=NetworkAdapter::NONE);
-
+    virtual ~ConnectionHandler() { };
 
     NetworkConnectionState check();
 

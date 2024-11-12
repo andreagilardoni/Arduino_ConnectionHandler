@@ -136,6 +136,7 @@ class NotecardConnectionHandler final : public ConnectionHandler
       bool keep_alive = true
     );
 
+    virtual ~NotecardConnectionHandler() { };
     /**
      * @brief Disable hardware interrupts
      *

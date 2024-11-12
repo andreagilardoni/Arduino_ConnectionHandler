@@ -64,8 +64,7 @@ class WiFiConnectionHandler : public ConnectionHandler
   public:
     WiFiConnectionHandler();
     WiFiConnectionHandler(char const * ssid, char const * pass, bool const keep_alive = true);
-
-
+    virtual ~WiFiConnectionHandler() { };
     virtual unsigned long getTime() override;
     virtual Client & getClient() override { return _wifi_client; }
     virtual UDP & getUDP() override { return _wifi_udp; }

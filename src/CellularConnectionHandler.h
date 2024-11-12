@@ -35,7 +35,7 @@ class CellularConnectionHandler : public ConnectionHandler
   public:
     CellularConnectionHandler();
     CellularConnectionHandler(const char * pin, const char * apn, const char * login, const char * pass, bool const keep_alive = true);
-
+    virtual ~CellularConnectionHandler() { };
 
     virtual unsigned long getTime() override;
     virtual Client & getClient() override { return _gsm_client; };
