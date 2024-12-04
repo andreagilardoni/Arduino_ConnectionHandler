@@ -78,7 +78,7 @@ NetworkConnectionState EthernetConnectionHandler::update_handleInit()
 
 NetworkConnectionState EthernetConnectionHandler::update_handleConnecting()
 {
-  if (IPAddress(_settings.eth.ip.type, _settings.eth.ip.bytes) == INADDR_NONE) {
+  if (IPAddress(_settings.eth.ip.type, _settings.eth.ip.bytes) != INADDR_NONE) {
     if (Ethernet.begin(nullptr,
         IPAddress(_settings.eth.ip.type, _settings.eth.ip.bytes),
         IPAddress(_settings.eth.dns.type, _settings.eth.dns.bytes),
