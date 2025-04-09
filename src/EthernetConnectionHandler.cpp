@@ -69,7 +69,7 @@ EthernetConnectionHandler::EthernetConnectionHandler(
 NetworkConnectionState EthernetConnectionHandler::update_handleInit()
 {
   if (Ethernet.hardwareStatus() == EthernetNoHardware) {
-    Debug.print(DBG_ERROR, F("Error, ethernet shield was not found."));
+    DEBUG_ERROR(F("Error, ethernet shield was not found."));
     return NetworkConnectionState::ERROR;
   }
   return NetworkConnectionState::CONNECTING;
@@ -88,16 +88,16 @@ NetworkConnectionState EthernetConnectionHandler::update_handleConnecting()
         _settings.eth.timeout,
         _settings.eth.response_timeout) == 0) {
 
-      Debug.print(DBG_ERROR, F("Failed to configure Ethernet, check cable connection"));
-      Debug.print(DBG_VERBOSE, "timeout: %d, response timeout: %d",
+      DEBUG_ERROR(F("Failed to configure Ethernet, check cable connection"));
+      DEBUG_VERBOSE("timeout: %d, response timeout: %d",
         _settings.eth.timeout, _settings.eth.response_timeout);
       return NetworkConnectionState::CONNECTING;
     }
   // An ip address is not provided -> dhcp configuration
   } else {
     if (Ethernet.begin(nullptr, _settings.eth.timeout, _settings.eth.response_timeout) == 0) {
-      Debug.print(DBG_ERROR, F("Waiting Ethernet configuration from DHCP server, check cable connection"));
-      Debug.print(DBG_VERBOSE, "timeout: %d, response timeout: %d",
+      DEBUG_ERROR(F("Waiting Ethernet configuration from DHCP server, check cable connection"));
+      DEBUG_VERBOSE("timeout: %d, response timeout: %d",
         _settings.eth.timeout, _settings.eth.response_timeout);
 
       return NetworkConnectionState::CONNECTING;
@@ -110,10 +110,10 @@ NetworkConnectionState EthernetConnectionHandler::update_handleConnecting()
 NetworkConnectionState EthernetConnectionHandler::update_handleConnected()
 {
   if (Ethernet.linkStatus() == LinkOFF) {
-    Debug.print(DBG_ERROR, F("Ethernet link OFF, connection lost."));
+    DEBUG_ERROR(F("Ethernet link OFF, connection lost."));
     if (_keep_alive)
     {
-      Debug.print(DBG_ERROR, F("Attempting reconnection"));
+      DEBUG_ERROR(F("Attempting reconnection"));
     }
     return NetworkConnectionState::DISCONNECTED;
   }

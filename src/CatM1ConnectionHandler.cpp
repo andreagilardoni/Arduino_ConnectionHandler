@@ -77,10 +77,10 @@ NetworkConnectionState CatM1ConnectionHandler::update_handleConnecting()
     static_cast<RadioAccessTechnologyType>(_settings.catm1.rat) ,
     _settings.catm1.band))
   {
-    Debug.print(DBG_ERROR, F("The board was not able to register to the network..."));
+    DEBUG_ERROR(F("The board was not able to register to the network..."));
     return NetworkConnectionState::ERROR;
   }
-  Debug.print(DBG_INFO, F("Connected to Network"));
+  DEBUG_INFO(F("Connected to Network"));
   return NetworkConnectionState::CONNECTED;
 }
 
