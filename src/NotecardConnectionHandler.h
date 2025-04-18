@@ -105,6 +105,11 @@ class NotecardConnectionHandler final : public ConnectionHandler
     static const uint32_t NOTEHUB_CONN_TIMEOUT_MS = 185000;
 
     /**
+     * @brief The empty constructor for the Notecard
+     */
+    NotecardConnectionHandler() {}
+
+    /**
      * @brief The I2C constructor for the Notecard
      *
      * @param project_uid[in] The project UID of the related Notehub account

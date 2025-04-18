@@ -27,6 +27,8 @@ namespace models {
   constexpr size_t LoraAppkeyLength = 33;       // appeui is 16 octets * 2 (hex format) + \0
   constexpr size_t LoraChannelMaskLength = 13;
 
+  constexpr size_t NoteCardProjectUidLength = 100;
+
   #if defined(BOARD_HAS_WIFI)
   struct WiFiSetting {
     char ssid[WifiSsidLength];
@@ -91,7 +93,15 @@ namespace models {
     char          channelMask[LoraChannelMaskLength];
     uint8_t       deviceClass;
   };
-#endif
+#endif //defined(BOARD_HAS_LORA)
+
+#if defined(BOARD_HAS_NOTECARD)
+  struct NoteCardSetting {
+    char projectUid[NoteCardProjectUidLength];
+    char ssid[WifiSsidLength];
+    char pwd[WifiPwdLength];
+  };
+#endif //defined(BOARD_HAS_NOTECARD)
 
   struct NetworkSetting {
     NetworkAdapter type;
@@ -122,6 +132,10 @@ namespace models {
 
       #if defined(BOARD_HAS_LORA)
       LoraSetting     lora;
+      #endif
+
+      #if defined(BOARD_HAS_NOTECARD)
+      NoteCardSetting notecard;
       #endif
     };
   };

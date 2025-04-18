@@ -105,7 +105,9 @@ NotecardConnectionHandler::NotecardConnectionHandler(
   _uart_baud(0),
   _en_hw_int(false),
   _topic_type{TopicType::Invalid}
-{ }
+{
+  strncpy(_settings.notecard.projectUid, project_uid_.c_str(), sizeof(_settings.notecard.projectUid));
+}
 
 NotecardConnectionHandler::NotecardConnectionHandler(
   const String & project_uid_,
@@ -117,7 +119,6 @@ NotecardConnectionHandler::NotecardConnectionHandler(
   _notecard{},
   _device_id{},
   _notecard_uid{},
-  _project_uid(project_uid_),
   _serial(&serial_),
   _wire(nullptr),
   _inbound_buffer(nullptr),
@@ -130,7 +131,9 @@ NotecardConnectionHandler::NotecardConnectionHandler(
   _uart_baud(baud_),
   _en_hw_int(false),
   _topic_type{TopicType::Invalid}
-{ }
+{
+  strncpy(_settings.notecard.projectUid, project_uid_.c_str(), sizeof(_settings.notecard.projectUid));
+}
 
 /******************************************************************************
    PUBLIC MEMBER FUNCTIONS

@@ -144,6 +144,12 @@ static inline ConnectionHandler* instantiate_handler(NetworkAdapter adapter) {
             break;
         #endif
 
+        #if defined(BOARD_HAS_NOTECARD)
+        case NetworkAdapter::NOTECARD:
+            return new NotecardConnectionHandler();
+            break;
+        #endif
+
         default:
             DEBUG_ERROR("Network adapter not supported by this platform: %d", adapter);
             return nullptr;

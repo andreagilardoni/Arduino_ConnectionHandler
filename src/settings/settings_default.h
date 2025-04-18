@@ -48,6 +48,10 @@ namespace models {
       break;
     #endif  //defined(BOARD_HAS_LORA)
 
+    #if defined(BOARD_HAS_NOTECARD)
+    case NetworkAdapter::NOTECARD:
+    #endif // defined(BOARD_HAS_NOTECARD)
+
     #if defined(BOARD_HAS_WIFI)
     case NetworkAdapter::WIFI: // nothing todo, default optional values are fine with 0
     #endif  //defined(BOARD_HAS_WIFI)
